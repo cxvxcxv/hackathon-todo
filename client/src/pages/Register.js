@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import '../styles/Login.css'
+import { Link, useNavigate } from "react-router-dom";
+import "../styles/Login.css";
 
 const Register = () => {
 	const [username, setUsername] = useState("");
@@ -25,13 +25,13 @@ const Register = () => {
 				setIsRegistered(true);
 				setTimeout(() => {
 					navigate("../tasks");
-				}, 3000)
+				}, 3000);
 			})
 			.catch(e => console.log(e));
 	};
 
 	return (
-		<div>
+		<div className="wrapper">
 			<h1>Sign Up</h1>
 			<input
 				type="text"
@@ -46,16 +46,14 @@ const Register = () => {
 				onChange={e => setPassword(e.target.value)}
 			/>
 			<button onClick={() => createUser()}>Sign Up</button>
-			<div>{isAlreadyExists && <p>This user already exists</p>}</div>
-			<div>
-				{isRegistered && (
-					<p>
-						You have been successfully registered, redirecting to tasks page in
-						3 seconds
-					</p>
-				)}
-			</div>
-			<img src="background.svg" alt=""></img>
+			<Link to="/login">login</Link>
+			{isAlreadyExists && <p>This user already exists</p>}
+			{isRegistered && (
+				<p>
+					You have been successfully registered, redirecting to tasks page in 3
+					seconds
+				</p>
+			)}
 		</div>
 	);
 };

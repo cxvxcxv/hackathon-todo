@@ -18,8 +18,8 @@ app.use(cors());
 app.post("/getUser", (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	const { id } = req.body;
-  const user = users.get(id);
-  res.json(user);
+	const user = users.get(id);
+	res.json(user);
 });
 
 // tasks
@@ -30,24 +30,23 @@ app.get("/tasks", (req, res) => {
 
 app.post("/create", (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
-	const { usernames, task, tags, deadline, author } = req.body;
-	const done = false;
-	tasks.create({ usernames, task, tags, done, deadline, author });
-	res.json({ usernames, task, tags, done, deadline, author });
+	const { usernames, task, done, tags, deadline, author } = req.body;
+	tasks.create({ usernames, task, done, tags, done, deadline, author });
+	res.json({ usernames, task, done, tags, done, deadline, author });
 });
 
 app.put("/change", (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
-	const { id, usernames, tags, done, deadline, author } = req.body; // to change, all data together is must be written
-	tasks.update({ id, usernames, tags, done, deadline, author });
-	res.json({ id, usernames, tags, done, deadline, author });
+	const { id, usernames, task, done, tags, deadline, author } = req.body; // to change, all data together is must be written
+	tasks.update({ id, usernames, task, done, tags, deadline, author });
+	res.json({ id, usernames, task, done, tags, deadline, author });
 });
 
 app.post("/delete", (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	const { id } = req.body;
 	tasks.delete(id);
-	res.status(200).send();
+	res.status(200).send(typeof id);
 });
 
 app.put("/done", (req, res) => {

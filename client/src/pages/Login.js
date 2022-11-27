@@ -43,9 +43,10 @@ const Login = () => {
 					onChange={e => setPassword(e.target.value)}
 				/>
 				<button onClick={() => handleLogin()}>Login</button>
-				<Link to="/register">register</Link>
+				<Link to="/register">Register</Link>
 				{isNotFound && <p>user is not found with such login and password</p>}
 			</div>
+			<img src="background.svg" className="background" alt="background" />
 		</>
 	);
 };

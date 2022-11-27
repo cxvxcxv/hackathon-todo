@@ -192,7 +192,7 @@ textarea::placeholder {
 .check:hover {
 	background-color: #20df7f;
 }
-img {
+.icons {
 	width: 20px;
 	height: 20px;
 }

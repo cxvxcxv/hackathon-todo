@@ -34,7 +34,8 @@ const Register = () => {
 	};
 
 	return (
-		<div className="wrapper">
+		<>
+			<div className="wrapper">
 			<h1>Sign Up</h1>
 			<input
 				type="text"
@@ -49,7 +50,7 @@ const Register = () => {
 				onChange={e => setPassword(e.target.value)}
 			/>
 			<button onClick={() => createUser()}>Sign Up</button>
-			<Link to="/login">login</Link>
+			<Link to="/login">Login</Link>
 			{isAlreadyExists && <p>This user already exists</p>}
 			{isEmpty && <p>fields must not be empty or contain spaces around</p>}
 			{isRegistered && (
@@ -59,6 +60,8 @@ const Register = () => {
 				</p>
 			)}
 		</div>
+		<img src="background.svg" className="background" alt="background" />
+		</>
 	);
 };
 

@@ -162,7 +162,9 @@ const Tasks = () => {
 				</button>
 				{isEmpty && <p>fields must not be empty</p>}
 
-				<div className="cards">
+				{!tasks.length
+					? <p>There are no tasks yet</p>
+					: <div className="cards">
 					{tasks?.map(task => (
 						<div className="card" key={task?.id}>
 							<div>
@@ -177,7 +179,7 @@ const Tasks = () => {
 										onClick={() => handleDeleteTask(task.id)}
 										className="btn__small bin"
 									>
-										<img src="bin.png" alt="delete" />
+										<img className="icons" src="bin.png" alt="delete" />
 									</button>
 									<button
 										onClick={() =>
@@ -193,13 +195,14 @@ const Tasks = () => {
 										}
 										className="btn__small check"
 									>
-										<img src="check.png" alt="check" />
+										<img className="icons" src="check.png" alt="check" />
 									</button>
 								</div>
 							</div>
 						</div>
 					))}
 				</div>
+				}
 			</div>
 		</>
 	);

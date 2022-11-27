@@ -8,14 +8,17 @@ const Register = () => {
 	const [password, setPassword] = useState("");
 	const [isAlreadyExists, setIsAlreadyExists] = useState(false);
 	const [isRegistered, setIsRegistered] = useState(false);
+	const [isEmpty, setIsEmpty] = useState(false);
 
 	const navigate = useNavigate();
 
 	const createUser = () => {
 		if (isRegistered) return;
+		if (!username.trim() || !password.trim()) return setIsEmpty(true);
 		setIsAlreadyExists(false);
+		setIsEmpty(false);
 		axios
-			.post("http://localhost:8080/register", { username, password })
+			.post("http://localhost:8080/register", { username: username.trim(), password: password.trim() })
 			.then(response => {
 				if (response.data === "You already have an account") {
 					setIsAlreadyExists(true);
@@ -48,6 +51,7 @@ const Register = () => {
 			<button onClick={() => createUser()}>Sign Up</button>
 			<Link to="/login">login</Link>
 			{isAlreadyExists && <p>This user already exists</p>}
+			{isEmpty && <p>fields must not be empty or contain spaces around</p>}
 			{isRegistered && (
 				<p>
 					You have been successfully registered, redirecting to tasks page in 3

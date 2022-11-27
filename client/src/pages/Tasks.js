@@ -12,7 +12,6 @@ const Tasks = () => {
 	const [deadline, setDeadline] = useState("");
 	const [author, setAuthor] = useState("");
 	const [inputNumber, setInputNumber] = useState([]);
-	const [done, setDone] = useState(false);
 	const [isEmpty, setIsEmpty] = useState(false);
 	const [currentDate, setCurrentDate] = useState('');
 
@@ -35,18 +34,18 @@ const Tasks = () => {
 		const inputs = document.querySelectorAll("#inputs-form input");
 		for (let i = 0; i < inputs.length; i++) {
 			if (inputs[i].value) {
-				setUsernames([usernames.push(inputs[i].value)]);
+				setUsernames([usernames.push(inputs[i].value.trim())]);
 			}
 		}
 
 			axios
 				.post("http://localhost:8080/create", {
 					usernames,
-					task,
-					done,
-					tags,
+					task: task.trim(),
+					done: false,
+					tags: tags.trim(),
 					deadline,
-					author,
+					author: author.trim(),
 				})
 				.then(response => {
 					setTask("");

@@ -12,19 +12,6 @@ const Login = () => {
 
 	const navigate = useNavigate();
 
-	const setValue = (type, value) => {
-		switch (type) {
-			case "username":
-				setUsername(value);
-				break;
-			case "password":
-				setPassword(value);
-				break;
-			default:
-				break;
-		}
-	};
-
 	const handleLogin = () => {
 		setIsNotFound(false);
 		axios
@@ -47,17 +34,17 @@ const Login = () => {
 					type="text"
 					required
 					placeholder="username"
-					onChange={e => setValue("username", e.target.value)}
+					onChange={e => setUsername(e.target.value)}
 				/>
 				<input
 					type="password"
 					required
 					placeholder="password"
-					onChange={e => setValue("password", e.target.value)}
+					onChange={e => setPassword(e.target.value)}
 				/>
 				<button onClick={() => handleLogin()}>Login</button>
 				<Link to="/register">register</Link>
-				{isNotFound && <p>user is not found</p>}
+				{isNotFound && <p>user is not found with such login and password</p>}
 			</div>
 		</>
 	);

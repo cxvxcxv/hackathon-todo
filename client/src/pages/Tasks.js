@@ -123,9 +123,9 @@ const Tasks = () => {
 				</button>
 
 				<form id="inputs-form">
-					<input placeholder="Usernames" />
+					<input placeholder="Username" />
 					{inputNumber.map((data, index) => (
-						<input placeholder="usernames" key={index} />
+						<input placeholder="Username" key={index} />
 					))}
 					<button className="btn__create" onClick={e => addInput(e)}>
 						Add Username

@@ -161,6 +161,10 @@ const Tasks = () => {
 					Create Task
 				</button>
 				{isEmpty && <p>fields must not be empty</p>}
+				<br />
+				<br />
+				<br />
+				<br />
 
 				{!tasks.length
 					? <p>There are no tasks yet</p>
@@ -182,7 +186,7 @@ const Tasks = () => {
 										<img className="icons" src="bin.png" alt="delete" />
 									</button>
 									<button
-										onClick={() =>
+										onClick={() => 
 											handleCheck(
 												task.id,
 												task.usernames,
@@ -191,10 +195,8 @@ const Tasks = () => {
 												task.done,
 												task.deadline,
 												task.author
-											)
-										}
-										className="btn__small check"
-									>
+											)}
+										className={task.done ? "btn__small checked check" : "btn__small check"}>
 										<img className="icons" src="check.png" alt="check" />
 									</button>
 								</div>
